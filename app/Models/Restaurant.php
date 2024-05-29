@@ -5,11 +5,14 @@ namespace App\Models;
 use App\Models\Scopes\Searchable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Spatie\Sluggable\HasSlug;
+use Spatie\Sluggable\SlugOptions;
 
 class Restaurant extends Model
 {
     use HasFactory;
     use Searchable;
+    use HasSlug;
 
     protected $fillable = [
         'user_id',
@@ -41,6 +44,16 @@ class Restaurant extends Model
         'published_at' => 'datetime',
         'reservation_required' => 'boolean',
     ];
+
+    /**
+     * Get the options for generating the slug.
+     */
+    public function getSlugOptions(): SlugOptions
+    {
+        return SlugOptions::create()
+            ->generateSlugsFrom('name')
+            ->saveSlugsTo('slug');
+    }
 
     public function user()
     {
