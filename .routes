@@ -1,0 +1,138 @@
+  GET|HEAD  sanctum/csrf-cookie ........................................................................................... sanctum.csrf-cookie › Laravel\Sanctum › CsrfCookieController@show
+ 
+  POST      api/login .................................................................................................................................. api.login › Api\AuthController@login
+
+  GET|HEAD  api/activities .............................................................................................................. api.activities.index › Api\ActivityController@index
+  POST      api/activities .............................................................................................................. api.activities.store › Api\ActivityController@store
+  GET|HEAD  api/activities/{activity} ..................................................................................................... api.activities.show › Api\ActivityController@show
+  PUT       api/activities/{activity} ................................................................................................. api.activities.update › Api\ActivityController@update
+  DELETE    api/activities/{activity} ............................................................................................... api.activities.destroy › Api\ActivityController@destroy
+  
+  GET|HEAD  api/cities .......................................................................................................................... api.cities.index › Api\CityController@index
+  POST      api/cities .......................................................................................................................... api.cities.store › Api\CityController@store
+  GET|HEAD  api/cities/{city} ..................................................................................................................... api.cities.show › Api\CityController@show
+  PUT       api/cities/{city} ................................................................................................................. api.cities.update › Api\CityController@update
+  DELETE    api/cities/{city} ............................................................................................................... api.cities.destroy › Api\CityController@destroy
+  GET|HEAD  api/cities/{city}/neighborhoods .......................................................................... api.cities.neighborhoods.index › Api\CityNeighborhoodsController@index
+  POST      api/cities/{city}/neighborhoods .......................................................................... api.cities.neighborhoods.store › Api\CityNeighborhoodsController@store
+ 
+  GET|HEAD  api/countries ................................................................................................................. api.countries.index › Api\CountryController@index
+  POST      api/countries ................................................................................................................. api.countries.store › Api\CountryController@store
+  GET|HEAD  api/countries/{country} ......................................................................................................... api.countries.show › Api\CountryController@show
+  PUT       api/countries/{country} ..................................................................................................... api.countries.update › Api\CountryController@update
+  DELETE    api/countries/{country} ................................................................................................... api.countries.destroy › Api\CountryController@destroy
+  GET|HEAD  api/countries/{country}/cities ................................................................................... api.countries.cities.index › Api\CountryCitiesController@index
+  POST      api/countries/{country}/cities ................................................................................... api.countries.cities.store › Api\CountryCitiesController@store
+ 
+  GET|HEAD  api/demandes ................................................................................................................... api.demandes.index › Api\DemandeController@index
+  POST      api/demandes ................................................................................................................... api.demandes.store › Api\DemandeController@store
+  GET|HEAD  api/demandes/{demande} ........................................................................................................... api.demandes.show › Api\DemandeController@show
+  PUT       api/demandes/{demande} ....................................................................................................... api.demandes.update › Api\DemandeController@update
+  DELETE    api/demandes/{demande} ..................................................................................................... api.demandes.destroy › Api\DemandeController@destroy
+  
+  GET|HEAD  api/favorites ................................................................................................................ api.favorites.index › Api\FavoriteController@index
+  POST      api/favorites ................................................................................................................ api.favorites.store › Api\FavoriteController@store
+  GET|HEAD  api/favorites/{favorite} ....................................................................................................... api.favorites.show › Api\FavoriteController@show
+  PUT       api/favorites/{favorite} ................................................................................................... api.favorites.update › Api\FavoriteController@update
+  DELETE    api/favorites/{favorite} ................................................................................................. api.favorites.destroy › Api\FavoriteController@destroy
+  
+  
+  GET|HEAD  api/menu-items .............................................................................................................. api.menu-items.index › Api\MenuItemController@index
+  POST      api/menu-items .............................................................................................................. api.menu-items.store › Api\MenuItemController@store
+  GET|HEAD  api/menu-items/{menuItem} ..................................................................................................... api.menu-items.show › Api\MenuItemController@show
+  PUT       api/menu-items/{menuItem} ................................................................................................. api.menu-items.update › Api\MenuItemController@update
+  DELETE    api/menu-items/{menuItem} ............................................................................................... api.menu-items.destroy › Api\MenuItemController@destroy
+  
+  GET|HEAD  api/menus ............................................................................................................................ api.menus.index › Api\MenuController@index
+  POST      api/menus ............................................................................................................................ api.menus.store › Api\MenuController@store
+  GET|HEAD  api/menus/{menu} ....................................................................................................................... api.menus.show › Api\MenuController@show
+  PUT       api/menus/{menu} ................................................................................................................... api.menus.update › Api\MenuController@update
+  DELETE    api/menus/{menu} ................................................................................................................. api.menus.destroy › Api\MenuController@destroy
+  GET|HEAD  api/menus/{menu}/menu-items ...................................................................................... api.menus.menu-items.index › Api\MenuMenuItemsController@index
+  POST      api/menus/{menu}/menu-items ...................................................................................... api.menus.menu-items.store › Api\MenuMenuItemsController@store
+  
+  
+  GET|HEAD  api/metas ............................................................................................................................ api.metas.index › Api\MetaController@index
+  POST      api/metas ............................................................................................................................ api.metas.store › Api\MetaController@store
+  GET|HEAD  api/metas/{meta} ....................................................................................................................... api.metas.show › Api\MetaController@show
+  PUT       api/metas/{meta} ................................................................................................................... api.metas.update › Api\MetaController@update
+  DELETE    api/metas/{meta} ................................................................................................................. api.metas.destroy › Api\MetaController@destroy
+  
+  
+  GET|HEAD  api/neighborhoods .................................................................................................... api.neighborhoods.index › Api\NeighborhoodController@index
+  POST      api/neighborhoods .................................................................................................... api.neighborhoods.store › Api\NeighborhoodController@store
+  GET|HEAD  api/neighborhoods/{neighborhood} ....................................................................................... api.neighborhoods.show › Api\NeighborhoodController@show
+  PUT       api/neighborhoods/{neighborhood} ................................................................................... api.neighborhoods.update › Api\NeighborhoodController@update
+  DELETE    api/neighborhoods/{neighborhood} ................................................................................. api.neighborhoods.destroy › Api\NeighborhoodController@destroy
+ 
+ 
+  GET|HEAD  api/pings ............................................................................................................................ api.pings.index › Api\PingController@index
+  POST      api/pings ............................................................................................................................ api.pings.store › Api\PingController@store
+  GET|HEAD  api/pings/{ping} ....................................................................................................................... api.pings.show › Api\PingController@show
+  PUT       api/pings/{ping} ................................................................................................................... api.pings.update › Api\PingController@update
+  DELETE    api/pings/{ping} ................................................................................................................. api.pings.destroy › Api\PingController@destroy
+  
+  
+  GET|HEAD  api/promotions ............................................................................................................. api.promotions.index › Api\PromotionController@index
+  POST      api/promotions ............................................................................................................. api.promotions.store › Api\PromotionController@store
+  GET|HEAD  api/promotions/{promotion} ................................................................................................... api.promotions.show › Api\PromotionController@show
+  PUT       api/promotions/{promotion} ............................................................................................... api.promotions.update › Api\PromotionController@update
+  DELETE    api/promotions/{promotion} ............................................................................................. api.promotions.destroy › Api\PromotionController@destroy
+  
+  
+  GET|HEAD  api/restaurants .......................................................................................................... api.restaurants.index › Api\RestaurantController@index
+  POST      api/restaurants .......................................................................................................... api.restaurants.store › Api\RestaurantController@store
+  GET|HEAD  api/restaurants/{restaurant} ............................................................................................... api.restaurants.show › Api\RestaurantController@show
+  PUT       api/restaurants/{restaurant} ........................................................................................... api.restaurants.update › Api\RestaurantController@update
+  DELETE    api/restaurants/{restaurant} ......................................................................................... api.restaurants.destroy › Api\RestaurantController@destroy
+  GET|HEAD  api/restaurants/{restaurant}/menus ............................................................................ api.restaurants.menus.index › Api\RestaurantMenusController@index
+  POST      api/restaurants/{restaurant}/menus ............................................................................ api.restaurants.menus.store › Api\RestaurantMenusController@store
+  GET|HEAD  api/restaurants/{restaurant}/terms ............................................................................ api.restaurants.terms.index › Api\RestaurantTermsController@index
+  POST      api/restaurants/{restaurant}/terms/{term} ..................................................................... api.restaurants.terms.store › Api\RestaurantTermsController@store
+  DELETE    api/restaurants/{restaurant}/terms/{term} ................................................................. api.restaurants.terms.destroy › Api\RestaurantTermsController@destroy
+  
+  
+  GET|HEAD  api/reviews ...................................................................................................................... api.reviews.index › Api\ReviewController@index
+  POST      api/reviews ...................................................................................................................... api.reviews.store › Api\ReviewController@store
+  GET|HEAD  api/reviews/{review} ............................................................................................................... api.reviews.show › Api\ReviewController@show
+  PUT       api/reviews/{review} ........................................................................................................... api.reviews.update › Api\ReviewController@update
+  DELETE    api/reviews/{review} ......................................................................................................... api.reviews.destroy › Api\ReviewController@destroy
+  
+  
+  GET|HEAD  api/taxonomies .............................................................................................................. api.taxonomies.index › Api\TaxonomyController@index
+  POST      api/taxonomies .............................................................................................................. api.taxonomies.store › Api\TaxonomyController@store
+  GET|HEAD  api/taxonomies/{taxonomy} ..................................................................................................... api.taxonomies.show › Api\TaxonomyController@show
+  PUT       api/taxonomies/{taxonomy} ................................................................................................. api.taxonomies.update › Api\TaxonomyController@update
+  DELETE    api/taxonomies/{taxonomy} ............................................................................................... api.taxonomies.destroy › Api\TaxonomyController@destroy
+  GET|HEAD  api/taxonomies/{taxonomy}/terms .................................................................................. api.taxonomies.terms.index › Api\TaxonomyTermsController@index
+  POST      api/taxonomies/{taxonomy}/terms .................................................................................. api.taxonomies.terms.store › Api\TaxonomyTermsController@store
+  
+  
+  GET|HEAD  api/terms ............................................................................................................................ api.terms.index › Api\TermController@index
+  POST      api/terms ............................................................................................................................ api.terms.store › Api\TermController@store
+  GET|HEAD  api/terms/{term} ....................................................................................................................... api.terms.show › Api\TermController@show
+  PUT       api/terms/{term} ................................................................................................................... api.terms.update › Api\TermController@update
+  DELETE    api/terms/{term} ................................................................................................................. api.terms.destroy › Api\TermController@destroy
+  GET|HEAD  api/terms/{term}/restaurants .................................................................................. api.terms.restaurants.index › Api\TermRestaurantsController@index
+  POST      api/terms/{term}/restaurants/{restaurant} ..................................................................... api.terms.restaurants.store › Api\TermRestaurantsController@store
+  DELETE    api/terms/{term}/restaurants/{restaurant} ................................................................. api.terms.restaurants.destroy › Api\TermRestaurantsController@destroy
+  
+  
+  GET|HEAD  api/user ............................................................................................................................................................... api.user
+  
+  GET|HEAD  api/users ............................................................................................................................ api.users.index › Api\UserController@index
+  POST      api/users ............................................................................................................................ api.users.store › Api\UserController@store
+  GET|HEAD  api/users/{user} ....................................................................................................................... api.users.show › Api\UserController@show
+  PUT       api/users/{user} ................................................................................................................... api.users.update › Api\UserController@update
+  DELETE    api/users/{user} ................................................................................................................. api.users.destroy › Api\UserController@destroy
+  GET|HEAD  api/users/{user}/activities ..................................................................................... api.users.activities.index › Api\UserActivitiesController@index
+  POST      api/users/{user}/activities ..................................................................................... api.users.activities.store › Api\UserActivitiesController@store
+  GET|HEAD  api/users/{user}/demandes ........................................................................................... api.users.demandes.index › Api\UserDemandesController@index
+  POST      api/users/{user}/demandes ........................................................................................... api.users.demandes.store › Api\UserDemandesController@store
+  GET|HEAD  api/users/{user}/favorites ........................................................................................ api.users.favorites.index › Api\UserFavoritesController@index
+  POST      api/users/{user}/favorites ........................................................................................ api.users.favorites.store › Api\UserFavoritesController@store
+  GET|HEAD  api/users/{user}/restaurants .................................................................................. api.users.restaurants.index › Api\UserRestaurantsController@index
+  POST      api/users/{user}/restaurants .................................................................................. api.users.restaurants.store › Api\UserRestaurantsController@store
+  GET|HEAD  api/users/{user}/reviews .............................................................................................. api.users.reviews.index › Api\UserReviewsController@index
+  POST      api/users/{user}/reviews .............................................................................................. api.users.reviews.store › Api\UserReviewsController@store
+

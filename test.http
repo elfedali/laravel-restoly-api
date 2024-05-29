@@ -1,0 +1,714 @@
+
+@token = 6|Z9BfAi7CkkUkE0OS6NHWqvdjWke5YPKG6uIAyIzJb5759aa1
+@hostname = localhost
+@activity = 1
+@activity_to_delete = 2
+@country = 1
+@city = 3
+
+GET       http://localhost:8000/sanctum/csrf-cookie
+###
+ 
+POST      http://localhost:8000/api/login  HTTP/1.1
+Content-Type: application/json
+Accept: application/json
+
+{
+  "email": "admin@admin.com",
+  "password": "admin"
+}
+###
+GET       http://localhost:8000/api/activities HTTP/1.1
+Accept: application/json
+Authorization: Bearer {{token}}
+###
+  
+POST      http://localhost:8000/api/activities 
+Accept: application/json
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "activity_key":"TEST_ACTIVITY_KEY",
+  "activity_content":"TEST_ACTIVITY_VALUE",
+  "user_id":1
+}
+###
+GET       http://localhost:8000/api/activities/{{activity}} 
+Accept: application/json
+Authorization: Bearer {{token}}
+
+###
+PUT       http://localhost:8000/api/activities/{{activity}} 
+Accept: application/json
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+"activity_key":"TEST_ACTIVITY_KEY",
+"activity_content":"TEST_ACTIVITY_VALUE edited b",
+"user_id":1
+}
+###
+DELETE    http://localhost:8000/api/activities/{{activity_to_delete}} 
+Accept: application/json
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+###
+
+GET       http://localhost:8000/api/cities 
+Accept: application/json
+Authorization: Bearer {{token}}
+
+###
+POST      http://localhost:8000/api/cities 
+Accept: application/json
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "title":"TEST_CITY",
+  "country_id":{{country}}
+}
+###
+GET       http://localhost:8000/api/cities/{{city}} 
+Accept: application/json
+Authorization: Bearer {{token}}
+
+###
+PUT       http://localhost:8000/api/cities/{{city}} 
+Accept: application/json
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "title":"TEST_CITY_EDITED",
+  "country_id":{{country}}
+}
+###
+DELETE    http://localhost:8000/api/cities/{{city}} 
+Accept: application/json
+Content-Type: application/json
+Authorization: Bearer {{token}}
+###
+GET       http://localhost:8000/api/cities/{{city}}/neighborhoods 
+Accept: application/json
+Authorization: Bearer {{token}}
+
+###
+POST      http://localhost:8000/api/cities/{{city}}/neighborhoods 
+Accept: application/json
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "title":"TEST_NEIGHBORHOOD"
+}
+###
+
+GET       http://localhost:8000/api/countries 
+Accept: application/json
+Authorization : Bearer {{token}}
+
+###
+POST      http://localhost:8000/api/countries 
+Accept: application/json
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "title": "Morocco",
+  "slug": "morocco-slug"
+}
+###
+GET       http://localhost:8000/api/countries/{country} 
+Accept: application/json
+
+###
+PUT       http://localhost:8000/api/countries/{country} 
+Accept: application/json
+Content-Type: application/json
+Authorization: Bearer {{token}}
+{
+
+}
+###
+DELETE    http://localhost:8000/api/countries/{country} 
+Accept: application/json
+Content-Type: application/json
+Authorization: Bearer {{token}}
+###
+GET       http://localhost:8000/api/countries/{country}/cities 
+Accept: application/json
+
+###
+POST      http://localhost:8000/api/countries/{country}/cities 
+Accept: application/json
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  
+}
+###
+
+GET       http://localhost:8000/api/demandes 
+Accept: application/json
+
+###
+POST      http://localhost:8000/api/demandes 
+Accept: application/json
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  
+}
+###
+GET       http://localhost:8000/api/demandes/{demande} 
+Accept: application/json
+
+###
+PUT       http://localhost:8000/api/demandes/{demande} 
+Accept: application/json
+Content-Type: application/json
+Authorization: Bearer {{token}}
+{
+
+}
+###
+DELETE    http://localhost:8000/api/demandes/{demande} 
+Accept: application/json
+Content-Type: application/json
+Authorization: Bearer {{token}}
+###
+
+GET       http://localhost:8000/api/favorites 
+Accept: application/json
+Authorization: Bearer {{token}}
+
+###
+POST      http://localhost:8000/api/favorites 
+Accept: application/json
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  
+}
+###
+GET       http://localhost:8000/api/favorites/{favorite} 
+Accept: application/json
+
+###
+PUT       http://localhost:8000/api/favorites/{favorite} 
+Accept: application/json
+Content-Type: application/json
+Authorization: Bearer {{token}}
+{
+
+}
+###
+DELETE    http://localhost:8000/api/favorites/{favorite} 
+Accept: application/json
+Content-Type: application/json
+Authorization: Bearer {{token}}
+###
+
+
+GET       http://localhost:8000/api/menu-items 
+Accept: application/json
+
+###
+POST      http://localhost:8000/api/menu-items 
+Accept: application/json
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  
+}
+###
+GET       http://localhost:8000/api/menu-items/{menuItem} 
+Accept: application/json
+
+###
+PUT       http://localhost:8000/api/menu-items/{menuItem} 
+Accept: application/json
+Content-Type: application/json
+Authorization: Bearer {{token}}
+{
+
+}
+###
+DELETE    http://localhost:8000/api/menu-items/{menuItem} 
+Accept: application/json
+Content-Type: application/json
+Authorization: Bearer {{token}}
+###
+
+GET       http://localhost:8000/api/menus 
+Accept: application/json
+
+###
+POST      http://localhost:8000/api/menus 
+Accept: application/json
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  
+}
+###
+GET       http://localhost:8000/api/menus/{menu} 
+Accept: application/json
+
+###
+PUT       http://localhost:8000/api/menus/{menu} 
+Accept: application/json
+Content-Type: application/json
+Authorization: Bearer {{token}}
+{
+
+}
+###
+DELETE    http://localhost:8000/api/menus/{menu} 
+Accept: application/json
+Content-Type: application/json
+Authorization: Bearer {{token}}
+###
+GET       http://localhost:8000/api/menus/{menu}/menu-items 
+Accept: application/json
+
+###
+POST      http://localhost:8000/api/menus/{menu}/menu-items 
+Accept: application/json
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  
+}
+###
+
+
+GET       http://localhost:8000/api/metas 
+Accept: application/json
+
+###
+POST      http://localhost:8000/api/metas 
+Accept: application/json
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  
+}
+###
+GET       http://localhost:8000/api/metas/{meta} 
+Accept: application/json
+
+###
+PUT       http://localhost:8000/api/metas/{meta} 
+Accept: application/json
+Content-Type: application/json
+Authorization: Bearer {{token}}
+{
+
+}
+###
+DELETE    http://localhost:8000/api/metas/{meta} 
+Accept: application/json
+Content-Type: application/json
+Authorization: Bearer {{token}}
+###
+
+
+GET       http://localhost:8000/api/neighborhoods 
+Accept: application/json
+
+###
+POST      http://localhost:8000/api/neighborhoods 
+Accept: application/json
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  
+}
+###
+GET       http://localhost:8000/api/neighborhoods/{neighborhood} 
+Accept: application/json
+
+###
+PUT       http://localhost:8000/api/neighborhoods/{neighborhood} 
+Accept: application/json
+Content-Type: application/json
+Authorization: Bearer {{token}}
+{
+
+}
+###
+DELETE    http://localhost:8000/api/neighborhoods/{neighborhood} 
+Accept: application/json
+Content-Type: application/json
+Authorization: Bearer {{token}}
+###
+
+
+GET       http://localhost:8000/api/pings 
+Accept: application/json
+
+###
+POST      http://localhost:8000/api/pings 
+Accept: application/json
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  
+}
+###
+GET       http://localhost:8000/api/pings/{ping} 
+Accept: application/json
+
+###
+PUT       http://localhost:8000/api/pings/{ping} 
+Accept: application/json
+Content-Type: application/json
+Authorization: Bearer {{token}}
+{
+
+}
+###
+DELETE    http://localhost:8000/api/pings/{ping} 
+Accept: application/json
+Content-Type: application/json
+Authorization: Bearer {{token}}
+###
+
+
+GET       http://localhost:8000/api/promotions 
+Accept: application/json
+
+###
+POST      http://localhost:8000/api/promotions 
+Accept: application/json
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  
+}
+###
+GET       http://localhost:8000/api/promotions/{promotion} 
+Accept: application/json
+
+###
+PUT       http://localhost:8000/api/promotions/{promotion} 
+Accept: application/json
+Content-Type: application/json
+Authorization: Bearer {{token}}
+{
+
+}
+###
+DELETE    http://localhost:8000/api/promotions/{promotion} 
+Accept: application/json
+Content-Type: application/json
+Authorization: Bearer {{token}}
+###
+
+
+GET       http://localhost:8000/api/restaurants 
+Accept: application/json
+
+###
+POST      http://localhost:8000/api/restaurants 
+Accept: application/json
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  
+}
+###
+GET       http://localhost:8000/api/restaurants/{restaurant} 
+Accept: application/json
+
+###
+PUT       http://localhost:8000/api/restaurants/{restaurant} 
+Accept: application/json
+Content-Type: application/json
+Authorization: Bearer {{token}}
+{
+
+}
+###
+DELETE    http://localhost:8000/api/restaurants/{restaurant} 
+Accept: application/json
+Content-Type: application/json
+Authorization: Bearer {{token}}
+###
+GET       http://localhost:8000/api/restaurants/{restaurant}/menus 
+Accept: application/json
+
+###
+POST      http://localhost:8000/api/restaurants/{restaurant}/menus 
+Accept: application/json
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  
+}
+###
+GET       http://localhost:8000/api/restaurants/{restaurant}/terms 
+Accept: application/json
+
+###
+POST      http://localhost:8000/api/restaurants/{restaurant}/terms/{term} 
+Accept: application/json
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  
+}
+###
+DELETE    http://localhost:8000/api/restaurants/{restaurant}/terms/{term} 
+Accept: application/json
+Content-Type: application/json
+Authorization: Bearer {{token}}
+###
+
+
+GET       http://localhost:8000/api/reviews 
+Accept: application/json
+
+###
+POST      http://localhost:8000/api/reviews 
+Accept: application/json
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  
+}
+###
+GET       http://localhost:8000/api/reviews/{review} 
+Accept: application/json
+
+###
+PUT       http://localhost:8000/api/reviews/{review} 
+Accept: application/json
+Content-Type: application/json
+Authorization: Bearer {{token}}
+{
+
+}
+###
+DELETE    http://localhost:8000/api/reviews/{review} 
+Accept: application/json
+Content-Type: application/json
+Authorization: Bearer {{token}}
+###
+
+
+GET       http://localhost:8000/api/taxonomies 
+Accept: application/json
+
+###
+POST      http://localhost:8000/api/taxonomies 
+Accept: application/json
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  
+}
+###
+GET       http://localhost:8000/api/taxonomies/{taxonomy} 
+Accept: application/json
+
+###
+PUT       http://localhost:8000/api/taxonomies/{taxonomy} 
+Accept: application/json
+Content-Type: application/json
+Authorization: Bearer {{token}}
+{
+
+}
+###
+DELETE    http://localhost:8000/api/taxonomies/{taxonomy} 
+Accept: application/json
+Content-Type: application/json
+Authorization: Bearer {{token}}
+###
+GET       http://localhost:8000/api/taxonomies/{taxonomy}/terms 
+Accept: application/json
+
+###
+POST      http://localhost:8000/api/taxonomies/{taxonomy}/terms 
+Accept: application/json
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  
+}
+###
+
+
+GET       http://localhost:8000/api/terms 
+Accept: application/json
+
+###
+POST      http://localhost:8000/api/terms 
+Accept: application/json
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  
+}
+###
+GET       http://localhost:8000/api/terms/{term} 
+Accept: application/json
+
+###
+PUT       http://localhost:8000/api/terms/{term} 
+Accept: application/json
+Content-Type: application/json
+Authorization: Bearer {{token}}
+{
+
+}
+###
+DELETE    http://localhost:8000/api/terms/{term} 
+Accept: application/json
+Content-Type: application/json
+Authorization: Bearer {{token}}
+###
+GET       http://localhost:8000/api/terms/{term}/restaurants 
+Accept: application/json
+
+###
+POST      http://localhost:8000/api/terms/{term}/restaurants/{restaurant} 
+Accept: application/json
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  
+}
+###
+DELETE    http://localhost:8000/api/terms/{term}/restaurants/{restaurant} 
+Accept: application/json
+Content-Type: application/json
+Authorization: Bearer {{token}}
+###
+
+
+GET       http://localhost:8000/api/user 
+Accept: application/json
+
+###
+
+GET       http://localhost:8000/api/users 
+Accept: application/json
+
+###
+POST      http://localhost:8000/api/users 
+Accept: application/json
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  
+}
+###
+GET       http://localhost:8000/api/users/{user} 
+Accept: application/json
+
+###
+PUT       http://localhost:8000/api/users/{user} 
+Accept: application/json
+Content-Type: application/json
+Authorization: Bearer {{token}}
+{
+
+}
+###
+DELETE    http://localhost:8000/api/users/{user} 
+Accept: application/json
+Content-Type: application/json
+Authorization: Bearer {{token}}
+###
+GET       http://localhost:8000/api/users/{user}/activities 
+Accept: application/json
+
+###
+POST      http://localhost:8000/api/users/{user}/activities 
+Accept: application/json
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  
+}
+###
+GET       http://localhost:8000/api/users/{user}/demandes 
+Accept: application/json
+
+###
+POST      http://localhost:8000/api/users/{user}/demandes 
+Accept: application/json
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  
+}
+###
+GET       http://localhost:8000/api/users/{user}/favorites 
+Accept: application/json
+
+###
+POST      http://localhost:8000/api/users/{user}/favorites 
+Accept: application/json
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  
+}
+###
+GET       http://localhost:8000/api/users/{user}/restaurants 
+Accept: application/json
+
+###
+POST      http://localhost:8000/api/users/{user}/restaurants 
+Accept: application/json
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  
+}
+###
+GET       http://localhost:8000/api/users/{user}/reviews 
+Accept: application/json
+
+###
+POST      http://localhost:8000/api/users/{user}/reviews 
+Accept: application/json
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  
+}
+###
+
