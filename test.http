@@ -1,10 +1,25 @@
 
-@token = 6|Z9BfAi7CkkUkE0OS6NHWqvdjWke5YPKG6uIAyIzJb5759aa1
+@token = 1|IWpepcv5bGOceQwnGVsnLytJZM9mxCEK7vWFTL9xbbb41cc7
 @hostname = localhost
 @activity = 1
 @activity_to_delete = 2
 @country = 1
 @city = 3
+
+@demande = 1
+@favorite = 1
+@menuItem = 1
+@menu = 1
+@meta = 1
+@neighborhood = 1
+@ping = 1
+@promotion = 1
+@restaurant = 1
+@review = 1
+@taxonomy = 2
+@term = 1
+@user = 1
+
 
 GET       http://localhost:8000/sanctum/csrf-cookie
 ###
@@ -17,7 +32,8 @@ Accept: application/json
   "email": "webmaster@restoly.ma",
   "password": "password"
 }
-###
+
+###----------ACTIVITY----------
 GET       http://localhost:8000/api/activities HTTP/1.1
 Accept: application/json
 Authorization: Bearer {{token}}
@@ -55,7 +71,7 @@ Accept: application/json
 Content-Type: application/json
 Authorization: Bearer {{token}}
 
-###
+###----------CITY----------
 
 GET       http://localhost:8000/api/cities 
 Accept: application/json
@@ -105,7 +121,7 @@ Authorization: Bearer {{token}}
 {
   "title":"TEST_NEIGHBORHOOD"
 }
-###
+###----------COUNTRY----------
 
 GET       http://localhost:8000/api/countries 
 Accept: application/json
@@ -122,41 +138,47 @@ Authorization: Bearer {{token}}
   "slug": "morocco-slug"
 }
 ###
-GET       http://localhost:8000/api/countries/{country} 
+GET       http://localhost:8000/api/countries/{{country}} 
 Accept: application/json
-
-###
-PUT       http://localhost:8000/api/countries/{country} 
-Accept: application/json
-Content-Type: application/json
 Authorization: Bearer {{token}}
-{
-
-}
-###
-DELETE    http://localhost:8000/api/countries/{country} 
-Accept: application/json
-Content-Type: application/json
-Authorization: Bearer {{token}}
-###
-GET       http://localhost:8000/api/countries/{country}/cities 
-Accept: application/json
 
 ###
-POST      http://localhost:8000/api/countries/{country}/cities 
+PUT       http://localhost:8000/api/countries/{{country}} 
 Accept: application/json
 Content-Type: application/json
 Authorization: Bearer {{token}}
 
 {
-  
+  "title" :"France"
 }
 ###
+DELETE    http://localhost:8000/api/countries/{{country}} 
+Accept: application/json
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+###
+GET       http://localhost:8000/api/countries/{{country}}/cities 
+Accept: application/json
+Authorization: Bearer {{token}}
+
+###
+POST      http://localhost:8000/api/countries/{{country}}/cities 
+Accept: application/json
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "title": "TATA"
+}
+
+###----------DEMANDe----------
 
 GET       http://localhost:8000/api/demandes 
 Accept: application/json
+Authorization: Bearer {{token}}
 
-###
+### 
 POST      http://localhost:8000/api/demandes 
 Accept: application/json
 Content-Type: application/json
@@ -166,23 +188,28 @@ Authorization: Bearer {{token}}
   
 }
 ###
-GET       http://localhost:8000/api/demandes/{demande} 
+GET       http://localhost:8000/api/demandes/{{demande}} 
 Accept: application/json
+Authorization: Bearer {{token}}
 
 ###
-PUT       http://localhost:8000/api/demandes/{demande} 
+PUT       http://localhost:8000/api/demandes/{{demande}} 
 Accept: application/json
 Content-Type: application/json
 Authorization: Bearer {{token}}
+
 {
 
 }
 ###
-DELETE    http://localhost:8000/api/demandes/{demande} 
+DELETE    http://localhost:8000/api/demandes/{{demande}} 
 Accept: application/json
 Content-Type: application/json
 Authorization: Bearer {{token}}
 ###
+
+
+###----------FAVORITE----------
 
 GET       http://localhost:8000/api/favorites 
 Accept: application/json
@@ -198,27 +225,31 @@ Authorization: Bearer {{token}}
   
 }
 ###
-GET       http://localhost:8000/api/favorites/{favorite} 
+GET       http://localhost:8000/api/favorites/{{favorite}} 
 Accept: application/json
+Authorization: Bearer {{token}}
 
 ###
-PUT       http://localhost:8000/api/favorites/{favorite} 
+PUT       http://localhost:8000/api/favorites/{{favorite}} 
 Accept: application/json
 Content-Type: application/json
 Authorization: Bearer {{token}}
+
 {
 
 }
 ###
-DELETE    http://localhost:8000/api/favorites/{favorite} 
+DELETE    http://localhost:8000/api/favorites/{{favorite}} 
 Accept: application/json
 Content-Type: application/json
 Authorization: Bearer {{token}}
 ###
 
+###----------MENU----------
 
 GET       http://localhost:8000/api/menu-items 
 Accept: application/json
+Authorization: Bearer {{token}}
 
 ###
 POST      http://localhost:8000/api/menu-items 
@@ -230,19 +261,25 @@ Authorization: Bearer {{token}}
   
 }
 ###
-GET       http://localhost:8000/api/menu-items/{menuItem} 
+GET       http://localhost:8000/api/menu-items/{{menuItem}} 
 Accept: application/json
+Authorization: Bearer {{token}}
 
 ###
-PUT       http://localhost:8000/api/menu-items/{menuItem} 
+PUT       http://localhost:8000/api/menu-items/{{menuItem}} 
 Accept: application/json
 Content-Type: application/json
 Authorization: Bearer {{token}}
+
 {
+"menu_id":1,
+"title":"TEST_MENU_ITEM_EDITED",
+"price": 99,
+"is_disponible": 1
 
 }
 ###
-DELETE    http://localhost:8000/api/menu-items/{menuItem} 
+DELETE    http://localhost:8000/api/menu-items/{{menuItem}} 
 Accept: application/json
 Content-Type: application/json
 Authorization: Bearer {{token}}
@@ -250,6 +287,7 @@ Authorization: Bearer {{token}}
 
 GET       http://localhost:8000/api/menus 
 Accept: application/json
+Authorization: Bearer {{token}}
 
 ###
 POST      http://localhost:8000/api/menus 
@@ -258,43 +296,55 @@ Content-Type: application/json
 Authorization: Bearer {{token}}
 
 {
-  
+  "restaurant_id" : {{restaurant}},
+  "title" : "TEST_MENU"
 }
 ###
-GET       http://localhost:8000/api/menus/{menu} 
+GET       http://localhost:8000/api/menus/{{menu}} 
 Accept: application/json
-
-###
-PUT       http://localhost:8000/api/menus/{menu} 
-Accept: application/json
-Content-Type: application/json
 Authorization: Bearer {{token}}
-{
-
-}
-###
-DELETE    http://localhost:8000/api/menus/{menu} 
-Accept: application/json
-Content-Type: application/json
-Authorization: Bearer {{token}}
-###
-GET       http://localhost:8000/api/menus/{menu}/menu-items 
-Accept: application/json
 
 ###
-POST      http://localhost:8000/api/menus/{menu}/menu-items 
+PUT       http://localhost:8000/api/menus/{{menu}} 
 Accept: application/json
 Content-Type: application/json
 Authorization: Bearer {{token}}
 
 {
-  
+ "restaurant_id" : {{restaurant}},
+  "title" : "TEST_MENU_EDITED"
 }
 ###
+DELETE    http://localhost:8000/api/menus/{{menu}} 
+Accept: application/json
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+
+###
+GET       http://localhost:8000/api/menus/{{menu}}/menu-items 
+Accept: application/json
+Authorization: Bearer {{token}}
+
+###
+POST      http://localhost:8000/api/menus/{{menu}}/menu-items 
+Accept: application/json
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "title": "TEST_MENU_ITEM",
+  "price": 99,
+  "is_disponible": 1
+}
+
+
+###----------META----------
 
 
 GET       http://localhost:8000/api/metas 
 Accept: application/json
+Authorization: Bearer {{token}}
 
 ###
 POST      http://localhost:8000/api/metas 
@@ -306,19 +356,20 @@ Authorization: Bearer {{token}}
   
 }
 ###
-GET       http://localhost:8000/api/metas/{meta} 
+GET       http://localhost:8000/api/metas/{{meta}} 
 Accept: application/json
 
 ###
-PUT       http://localhost:8000/api/metas/{meta} 
+PUT       http://localhost:8000/api/metas/{{meta}} 
 Accept: application/json
 Content-Type: application/json
 Authorization: Bearer {{token}}
+
 {
 
 }
 ###
-DELETE    http://localhost:8000/api/metas/{meta} 
+DELETE    http://localhost:8000/api/metas/{{meta}} 
 Accept: application/json
 Content-Type: application/json
 Authorization: Bearer {{token}}
@@ -327,6 +378,7 @@ Authorization: Bearer {{token}}
 
 GET       http://localhost:8000/api/neighborhoods 
 Accept: application/json
+Authorization: Bearer {{token}}
 
 ###
 POST      http://localhost:8000/api/neighborhoods 
@@ -335,30 +387,39 @@ Content-Type: application/json
 Authorization: Bearer {{token}}
 
 {
-  
+  "title":"TEST_NEIGHBORHOOD",
+  "city_id":{{city}}
 }
 ###
-GET       http://localhost:8000/api/neighborhoods/{neighborhood} 
+GET       http://localhost:8000/api/neighborhoods/{{neighborhood}} 
 Accept: application/json
+Authorization: Bearer {{token}}
 
 ###
-PUT       http://localhost:8000/api/neighborhoods/{neighborhood} 
+PUT       http://localhost:8000/api/neighborhoods/{{neighborhood}} 
 Accept: application/json
 Content-Type: application/json
 Authorization: Bearer {{token}}
+
 {
+  "title":"TEST_NEIGHBORHOOD_EDITED",
+  "city_id":{{city}}
 
 }
 ###
-DELETE    http://localhost:8000/api/neighborhoods/{neighborhood} 
+DELETE    http://localhost:8000/api/neighborhoods/{{neighborhood}} 
 Accept: application/json
 Content-Type: application/json
 Authorization: Bearer {{token}}
-###
+
+
+###----------PING----------
+
 
 
 GET       http://localhost:8000/api/pings 
 Accept: application/json
+Authorization: Bearer {{token}}
 
 ###
 POST      http://localhost:8000/api/pings 
@@ -370,27 +431,32 @@ Authorization: Bearer {{token}}
   
 }
 ###
-GET       http://localhost:8000/api/pings/{ping} 
+GET       http://localhost:8000/api/pings/{{ping}} 
 Accept: application/json
+Authorization: Bearer {{token}}
 
 ###
-PUT       http://localhost:8000/api/pings/{ping} 
+PUT       http://localhost:8000/api/pings/{{ping}} 
 Accept: application/json
 Content-Type: application/json
 Authorization: Bearer {{token}}
+
 {
 
 }
 ###
-DELETE    http://localhost:8000/api/pings/{ping} 
+DELETE    http://localhost:8000/api/pings/{{ping}} 
 Accept: application/json
 Content-Type: application/json
 Authorization: Bearer {{token}}
-###
+
+
+###----------PROMOTION-------
 
 
 GET       http://localhost:8000/api/promotions 
 Accept: application/json
+Authorization: Bearer {{token}}
 
 ###
 POST      http://localhost:8000/api/promotions 
@@ -402,27 +468,31 @@ Authorization: Bearer {{token}}
   
 }
 ###
-GET       http://localhost:8000/api/promotions/{promotion} 
+GET       http://localhost:8000/api/promotions/{{promotion}} 
 Accept: application/json
+Authorization: Bearer {{token}}
 
 ###
-PUT       http://localhost:8000/api/promotions/{promotion} 
+PUT       http://localhost:8000/api/promotions/{{promotion}} 
 Accept: application/json
 Content-Type: application/json
 Authorization: Bearer {{token}}
+
 {
 
 }
 ###
-DELETE    http://localhost:8000/api/promotions/{promotion} 
+DELETE    http://localhost:8000/api/promotions/{{promotion}} 
 Accept: application/json
 Content-Type: application/json
 Authorization: Bearer {{token}}
-###
+
+###----------RESTAURANT----------
 
 
 GET       http://localhost:8000/api/restaurants 
 Accept: application/json
+Authorization: Bearer {{token}}
 
 ###
 POST      http://localhost:8000/api/restaurants 
@@ -431,18 +501,34 @@ Content-Type: application/json
 Authorization: Bearer {{token}}
 
 {
+  "user_id":{{user}},
+  "title":"TEST_RESTAURANT",
+  "is_published":1,
+  "phone":"0666666666"
+
   
 }
 ###
-GET       http://localhost:8000/api/restaurants/{restaurant} 
+GET       http://localhost:8000/api/restaurants/{{restaurant}} 
 Accept: application/json
+Authorization: Bearer {{token}}
 
 ###
-PUT       http://localhost:8000/api/restaurants/{restaurant} 
+PUT       http://localhost:8000/api/restaurants/{{restaurant}} 
 Accept: application/json
 Content-Type: application/json
 Authorization: Bearer {{token}}
+
 {
+  "user_id":{{user}},
+  "title":"TEST_RESTAURANT_EDITED",
+  "is_published":1,
+  "phone":"0666666667",
+  "content":"Some content",
+  "excerpt": "Some cexcerpt",
+  "phone_2": "0666666668",
+  "phone_3": "0666666669",
+  "website_url": "http://www.restoly.ma/{{restaurant}}/home"
 
 }
 ###
@@ -450,12 +536,31 @@ DELETE    http://localhost:8000/api/restaurants/{restaurant}
 Accept: application/json
 Content-Type: application/json
 Authorization: Bearer {{token}}
-###
-GET       http://localhost:8000/api/restaurants/{restaurant}/menus 
+
+###----------RESTAURANTS MENU----------
+
+GET       http://localhost:8000/api/restaurants/{{restaurant}}/menus 
 Accept: application/json
+Authorization: Bearer {{token}}
 
 ###
-POST      http://localhost:8000/api/restaurants/{restaurant}/menus 
+POST      http://localhost:8000/api/restaurants/{{restaurant}}/menus 
+Accept: application/json
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "title": "TEST_MENU-{{restaurant}}"
+}
+
+### ----------RESTAURANTS TERMS----------
+GET       http://localhost:8000/api/restaurants/{{restaurant}}/terms 
+Accept: application/json
+Authorization: Bearer {{token}}
+
+
+###
+POST      http://localhost:8000/api/restaurants/{{restaurant}}/terms/{{term}} 
 Accept: application/json
 Content-Type: application/json
 Authorization: Bearer {{token}}
@@ -464,28 +569,18 @@ Authorization: Bearer {{token}}
   
 }
 ###
-GET       http://localhost:8000/api/restaurants/{restaurant}/terms 
-Accept: application/json
-
-###
-POST      http://localhost:8000/api/restaurants/{restaurant}/terms/{term} 
+DELETE    http://localhost:8000/api/restaurants/{{restaurant}}/terms/{{term}} 
 Accept: application/json
 Content-Type: application/json
 Authorization: Bearer {{token}}
 
-{
-  
-}
-###
-DELETE    http://localhost:8000/api/restaurants/{restaurant}/terms/{term} 
-Accept: application/json
-Content-Type: application/json
-Authorization: Bearer {{token}}
-###
+
+### ----------RESTAURANTS REVIEWS----------
 
 
 GET       http://localhost:8000/api/reviews 
 Accept: application/json
+Authorization: Bearer {{token}}
 
 ###
 POST      http://localhost:8000/api/reviews 
@@ -513,11 +608,13 @@ DELETE    http://localhost:8000/api/reviews/{review}
 Accept: application/json
 Content-Type: application/json
 Authorization: Bearer {{token}}
-###
+
+### ---------------------------------TAXONOMY---------------------------------
 
 
 GET       http://localhost:8000/api/taxonomies 
 Accept: application/json
+Authorization: Bearer {{token}}
 
 ###
 POST      http://localhost:8000/api/taxonomies 
@@ -526,45 +623,51 @@ Content-Type: application/json
 Authorization: Bearer {{token}}
 
 {
-  
+  "title":"TEST_TAXONOMY"
 }
 ###
-GET       http://localhost:8000/api/taxonomies/{taxonomy} 
+GET       http://localhost:8000/api/taxonomies/{{taxonomy}} 
 Accept: application/json
-
-###
-PUT       http://localhost:8000/api/taxonomies/{taxonomy} 
-Accept: application/json
-Content-Type: application/json
-Authorization: Bearer {{token}}
-{
-
-}
-###
-DELETE    http://localhost:8000/api/taxonomies/{taxonomy} 
-Accept: application/json
-Content-Type: application/json
 Authorization: Bearer {{token}}
 ###
-GET       http://localhost:8000/api/taxonomies/{taxonomy}/terms 
-Accept: application/json
-
-###
-POST      http://localhost:8000/api/taxonomies/{taxonomy}/terms 
+PUT       http://localhost:8000/api/taxonomies/{{taxonomy}} 
 Accept: application/json
 Content-Type: application/json
 Authorization: Bearer {{token}}
 
 {
-  
+  "title":"TEST_TAXONOMY_EDITED"
+ 
+}
+###
+DELETE    http://localhost:8000/api/taxonomies/{{taxonomy}} 
+Accept: application/json
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+###
+GET       http://localhost:8000/api/taxonomies/{{taxonomy}}/terms 
+Accept: application/json
+Authorization: Bearer {{token}}
+
+###
+POST      http://localhost:8000/api/taxonomies/{{taxonomy}}/terms 
+Accept: application/json
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "title": "TEST_TERM"
 }
 ###
 
 
 GET       http://localhost:8000/api/terms 
 Accept: application/json
+Authorization: Bearer {{token}}
 
 ###
+
 POST      http://localhost:8000/api/terms 
 Accept: application/json
 Content-Type: application/json
@@ -574,8 +677,10 @@ Authorization: Bearer {{token}}
   
 }
 ###
-GET       http://localhost:8000/api/terms/{term} 
+GET       http://localhost:8000/api/terms/{{term}} 
 Accept: application/json
+Content-Type: application/json
+Authorization: Bearer {{token}}
 
 ###
 PUT       http://localhost:8000/api/terms/{term} 
@@ -613,6 +718,7 @@ Authorization: Bearer {{token}}
 
 GET       http://localhost:8000/api/user 
 Accept: application/json
+Authorization: Bearer {{token}}
 
 ###
 

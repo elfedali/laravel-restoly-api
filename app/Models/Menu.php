@@ -24,7 +24,7 @@ class Menu extends Model
     public function getSlugOptions(): SlugOptions
     {
         return SlugOptions::create()
-            ->generateSlugsFrom('name')
+            ->generateSlugsFrom('title')
             ->saveSlugsTo('slug');
     }
     public function restaurant()
